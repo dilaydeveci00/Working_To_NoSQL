@@ -1,0 +1,10 @@
+# VirtualBox / VM files
+*.vdi
+*.vbox
+*.vbox-prev
+*.log
+Logs/
+
+# OS files
+Thumbs.db
+.DS_Store
