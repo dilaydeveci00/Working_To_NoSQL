@@ -2,9 +2,8 @@
 *.vdi
 *.vbox
 *.vbox-prev
-*.log
-Logs/
 
-# OS files
-Thumbs.db
+
+# OS
 .DS_Store
+Thumbs.db
