@@ -1,66 +1,121 @@
-# 🚀 Working To NoSQL  
-## Multi-Model Database Analysis & High Availability Lab
+# 🚀 Working To NoSQL
 
-Bu proje, modern veri mimarilerinde kullanılan **NoSQL veri tabanı modellerini** uygulamalı olarak incelemek, **CAP Teoremi** kapsamında sistem davranışlarını analiz etmek ve dağıtık sistemlerde **yüksek erişilebilirlik (High Availability)** kavramlarını deneyimlemek amacıyla geliştirilmiştir.
+### Multi-Model Database Analysis & High Availability Lab
 
-Proje kapsamında **Document, Column-Family, Key-Value ve Graph** veri modelleri, Docker tabanlı izole servisler üzerinde yapılandırılmış ve karşılaştırmalı olarak analiz edilmiştir.
+This project was developed to study NoSQL database models used in modern data architectures in a hands-on way, analyze system behavior in the context of the CAP Theorem, and gain practical experience with High Availability concepts in distributed systems.
 
----
-
-## 🎯 Projenin Amacı
-
-- NoSQL veri modellerinin mimari farklarını kavramak  
-- CAP Teoremi (Consistency, Availability, Partition Tolerance) prensiplerini uygulamalı gözlemlemek  
-- Dağıtık sistemlerde replikasyon ve failover davranışlarını incelemek  
-- Docker konteyner mimarisi ile taşınabilir ve izole bir çalışma ortamı oluşturmak  
+As part of the project, **Document**, **Column-Family**, **Key-Value**, and **Graph** data models were configured as isolated Docker-based services and analyzed comparatively.
 
 ---
 
-## 🏗️ Sistem Mimarisi
+## 🎯 Project Goals
 
-Sistem, **Docker konteynerları** üzerinde çalışan birbirinden bağımsız servislerden oluşmaktadır. Her veritabanı kendi izole ortamında çalışmakta olup, MongoDB özelinde **Replica Set** yapısı kurulmuştur.
-
-### 🌐 Kullanılan Veri Modelleri ve Teknolojiler
-
-| Veritabanı | Veri Modeli | CAP Özelliği |
-|------------|------------|--------------|
-| **MongoDB** | Document-Oriented | **CP** (Consistency & Partition Tolerance) |
-| **Apache Cassandra** | Column-Family | **AP** (Availability & Partition Tolerance) |
-| **RiakKV** | Key-Value | **AP** (High Availability) |
-| **Neo4j** | Graph | **ACID** & İlişki Odaklı Sorgulama |
+* Understand the architectural differences between NoSQL data models
+* Observe the principles of the CAP Theorem (Consistency, Availability, Partition Tolerance) in practice
+* Examine replication and failover behavior in distributed systems
+* Build a portable and isolated environment using Docker container architecture
 
 ---
 
-## 🧩 Servis Detayları
+## 🏗️ System Architecture
+
+The system consists of independent services running inside Docker containers. Each database operates in its own isolated environment, while MongoDB is configured with a Replica Set structure to provide high availability.
+
+---
+
+## 🌐 Data Models and Technologies Used
+
+| Database         | Data Model        | CAP Property                            |
+| ---------------- | ----------------- | --------------------------------------- |
+| MongoDB          | Document-Oriented | CP (Consistency & Partition Tolerance)  |
+| Apache Cassandra | Column-Family     | AP (Availability & Partition Tolerance) |
+| RiakKV           | Key-Value         | AP (High Availability)                  |
+| Neo4j            | Graph             | ACID & Relationship-Oriented Querying   |
+
+---
+
+## 🧩 Service Details
 
 ### 1️⃣ MongoDB – Document Store
-- **Yapı:** 3 Node Replica Set (`mongo1`, `mongo2`, `mongo3`)
-- **Amaç:** Veri tutarlılığı ve yüksek erişilebilirlik
-- **Özellik:** Otomatik lider seçimi (Election) ve failover mekanizması
+
+* **Structure:** 3-node Replica Set (`mongo1`, `mongo2`, `mongo3`)
+* **Purpose:** Data consistency and high availability
+* **Features:**
+
+  * Automatic leader election
+  * Failover mechanism
+  * Replica synchronization
 
 ### 2️⃣ Apache Cassandra – Wide Column Store
-- **Amaç:** Yatay ölçeklenebilirlik ve yüksek yazma performansı
+
+* **Purpose:** Horizontal scalability and high write throughput
+* **Features:**
+
+  * Distributed architecture
+  * Tunable consistency levels
+  * Fault tolerance
 
 ### 3️⃣ Neo4j – Graph Database
-- **Yapı:** Native Graph Engine
-- **Amaç:** İlişkisel veri analizleri ve Cypher sorgu dili ile graph işlemleri
+
+* **Structure:** Native Graph Engine
+* **Purpose:** Relationship-focused data analysis
+* **Features:**
+
+  * Cypher query language
+  * Graph traversal optimization
+  * ACID transactions
 
 ### 4️⃣ RiakKV – Key-Value Store
-- **Amaç:** Yüksek erişilebilirlik ve düşük gecikmeli veri erişimi
+
+* **Purpose:** High availability and low-latency data access
+* **Features:**
+
+  * Distributed storage
+  * Fault-tolerant architecture
+  * Automatic data replication
 
 ---
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🛠️ Setup and Running
 
-### 📦 Gereksinimler
-- Docker
-- Docker Compose
-- Linux (Ubuntu önerilir)
+### 📦 Requirements
 
-### ▶️ Servisleri Başlatma
+* Docker
+* Docker Compose
+* Linux (Ubuntu recommended)
 
-# MongoDB Replica Set
+---
+
+### ▶️ Starting the Services
+
+#### MongoDB Replica Set
+
+```bash
 sudo docker start mongo1 mongo2 mongo3
+```
 
-# Diğer NoSQL Servisleri
-sudo docker start cassandra-server riak-server neo4j-server
+#### Other NoSQL Services
+
+```bash
+sudo docker start cassandra-server
+sudo docker start riak-server
+sudo docker start neo4j-server
+```
+
+---
+
+## 🔬 Concepts Demonstrated
+
+* CAP Theorem
+* Replication
+* Failover
+* High Availability
+* Distributed Databases
+* Docker Containerization
+* NoSQL Data Models
+
+---
+
+## 📄 License
+
+This project was developed for educational and research purposes.
